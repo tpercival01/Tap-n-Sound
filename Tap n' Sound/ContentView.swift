@@ -27,7 +27,6 @@ struct ContentView: View {
                     self.selectRandomImage()
                     self.playSound()
                 }
-                .border(Color.red, width: 2)
             
             if let image = selectedImage {
                 Image(uiImage: image)
