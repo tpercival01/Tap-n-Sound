@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E92418ED2BD593AC0055ABF7 /* sound5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E92418E72BD593AB0055ABF7 /* sound5.wav */; };
+		E92418EE2BD593AC0055ABF7 /* sound3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E92418E82BD593AB0055ABF7 /* sound3.wav */; };
+		E92418EF2BD593AC0055ABF7 /* sound2.wav in Resources */ = {isa = PBXBuildFile; fileRef = E92418E92BD593AB0055ABF7 /* sound2.wav */; };
+		E92418F02BD593AC0055ABF7 /* sound4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E92418EA2BD593AB0055ABF7 /* sound4.wav */; };
+		E92418F12BD593AC0055ABF7 /* sound6.wav in Resources */ = {isa = PBXBuildFile; fileRef = E92418EB2BD593AB0055ABF7 /* sound6.wav */; };
+		E92418F22BD593AC0055ABF7 /* sound1.wav in Resources */ = {isa = PBXBuildFile; fileRef = E92418EC2BD593AB0055ABF7 /* sound1.wav */; };
 		E9336D212BD5664F00E61E33 /* Tap_n__SoundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9336D202BD5664F00E61E33 /* Tap_n__SoundApp.swift */; };
 		E9336D232BD5664F00E61E33 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9336D222BD5664F00E61E33 /* ContentView.swift */; };
 		E9336D252BD5665000E61E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9336D242BD5665000E61E33 /* Assets.xcassets */; };
@@ -14,6 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E92418E72BD593AB0055ABF7 /* sound5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound5.wav; path = "Tap n' Sound/sound5.wav"; sourceTree = SOURCE_ROOT; };
+		E92418E82BD593AB0055ABF7 /* sound3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound3.wav; path = "Tap n' Sound/sound3.wav"; sourceTree = SOURCE_ROOT; };
+		E92418E92BD593AB0055ABF7 /* sound2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound2.wav; path = "Tap n' Sound/sound2.wav"; sourceTree = SOURCE_ROOT; };
+		E92418EA2BD593AB0055ABF7 /* sound4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound4.wav; path = "Tap n' Sound/sound4.wav"; sourceTree = SOURCE_ROOT; };
+		E92418EB2BD593AB0055ABF7 /* sound6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound6.wav; path = "Tap n' Sound/sound6.wav"; sourceTree = SOURCE_ROOT; };
+		E92418EC2BD593AB0055ABF7 /* sound1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound1.wav; path = "Tap n' Sound/sound1.wav"; sourceTree = SOURCE_ROOT; };
 		E9336D1D2BD5664F00E61E33 /* Tap n' Sound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tap n' Sound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9336D202BD5664F00E61E33 /* Tap_n__SoundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tap_n__SoundApp.swift; sourceTree = "<group>"; };
 		E9336D222BD5664F00E61E33 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,10 +63,15 @@
 		E9336D1F2BD5664F00E61E33 /* Tap n' Sound */ = {
 			isa = PBXGroup;
 			children = (
-				E9336D2E2BD573BD00E61E33 /* Sound Files */,
 				E9336D202BD5664F00E61E33 /* Tap_n__SoundApp.swift */,
 				E9336D222BD5664F00E61E33 /* ContentView.swift */,
 				E9336D242BD5665000E61E33 /* Assets.xcassets */,
+				E92418EC2BD593AB0055ABF7 /* sound1.wav */,
+				E92418E92BD593AB0055ABF7 /* sound2.wav */,
+				E92418E82BD593AB0055ABF7 /* sound3.wav */,
+				E92418EA2BD593AB0055ABF7 /* sound4.wav */,
+				E92418E72BD593AB0055ABF7 /* sound5.wav */,
+				E92418EB2BD593AB0055ABF7 /* sound6.wav */,
 				E9336D262BD5665000E61E33 /* Preview Content */,
 			);
 			path = "Tap n' Sound";
@@ -66,13 +83,6 @@
 				E9336D272BD5665000E61E33 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E9336D2E2BD573BD00E61E33 /* Sound Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Sound Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +143,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E92418F22BD593AC0055ABF7 /* sound1.wav in Resources */,
+				E92418F12BD593AC0055ABF7 /* sound6.wav in Resources */,
+				E92418EF2BD593AC0055ABF7 /* sound2.wav in Resources */,
+				E92418F02BD593AC0055ABF7 /* sound4.wav in Resources */,
+				E92418ED2BD593AC0055ABF7 /* sound5.wav in Resources */,
 				E9336D282BD5665000E61E33 /* Preview Assets.xcassets in Resources */,
+				E92418EE2BD593AC0055ABF7 /* sound3.wav in Resources */,
 				E9336D252BD5665000E61E33 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

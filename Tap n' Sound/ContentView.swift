@@ -54,7 +54,7 @@ struct ContentView: View {
 
 class AudioManager: ObservableObject {
     var audioPlayer: AVAudioPlayer?
-    let soundFileNames = ["sound1", "sound2", "sound3"]
+    let soundFileNames = ["sound1", "sound2", "sound3", "sound4", "sound5", "sound6"]
 
     func playRandomSound() {
         guard let soundFileName = soundFileNames.randomElement() else {
