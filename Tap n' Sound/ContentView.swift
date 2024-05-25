@@ -1,18 +1,11 @@
-//
-//  ContentView.swift
-//  Tap n' Sound
-//
-//  Created by Thomas Percival on 21/04/2024.
-//
-
 import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
     
-    let images: [UIImage] = [UIImage(named: "A")!, UIImage(named: "B")!, UIImage(named: "C")!, UIImage(named: "D")!, UIImage(named: "E")!, UIImage(named: "F")!, UIImage(named: "G")!, UIImage(named: "H")!, UIImage(named: "I")!, UIImage(named: "J")!, UIImage(named: "K")!, UIImage(named: "L")!, UIImage(named: "M")!]
+    let images: [UIImage] = [UIImage(named: "A")!, UIImage(named: "B")!, UIImage(named: "C")!, UIImage(named: "D")!, UIImage(named: "E")!, UIImage(named: "F")!, UIImage(named: "G")!, UIImage(named: "H")!, UIImage(named: "I")!, UIImage(named: "J")!, UIImage(named: "K")!, UIImage(named: "L")!, UIImage(named: "M")!, UIImage(named: "N")!, UIImage(named: "O")!, UIImage(named: "P")!, UIImage(named: "Q")!, UIImage(named: "R")!, UIImage(named: "S")!, UIImage(named: "T")!, UIImage(named: "U")!, UIImage(named: "V")!, UIImage(named: "W")!, UIImage(named: "X")!, UIImage(named: "Y")!, UIImage(named: "Z")!, UIImage(named: "0")!, UIImage(named: "1")!, UIImage(named: "2")!, UIImage(named: "3")!, UIImage(named: "4")!, UIImage(named: "5")!, UIImage(named: "6")!, UIImage(named: "7")!, UIImage(named: "8")!, UIImage(named: "9")!]
         
-    @State private var selectedImage: UIImage? // Store the selected image
+    @State private var displayedImages: [(image: UIImage, position: CGPoint, size: CGSize)] = []
     @State private var imageSize: CGSize = CGSize(width: 100, height: 100) // Initial size of the image
     @StateObject private var audioPlayer = AudioManager()
     
@@ -23,28 +16,42 @@ struct ContentView: View {
                 .foregroundColor(Color.blue)
                 .contentShape(Rectangle())
                 .edgesIgnoringSafeArea(.all)
-                .onTapGesture {
-                    self.selectRandomImage()
-                    self.playSound()
-                }
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onEnded { value in
+                            self.addImage(at: value.location)
+                            self.playSound()
+                        }
+                )
             
-            if let image = selectedImage {
-                Image(uiImage: image)
+            ForEach(0..<displayedImages.count, id: \.self) { index in
+                Image(uiImage: displayedImages[index].image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: imageSize.width, height: imageSize.height) // Set the size of the image
-                    .position(x: CGFloat.random(in: imageSize.width/2...UIScreen.main.bounds.width-imageSize.width/2), y: CGFloat.random(in: imageSize.height/2...UIScreen.main.bounds.height-imageSize.height/2)) // Randomize the position of the image
-                    .onTapGesture {
-                        self.selectRandomImage()
-                        self.playSound()
-                    }
+                    .frame(width: displayedImages[index].size.width, height: displayedImages[index].size.height)
+                    .position(displayedImages[index].position)
+                    .gesture(
+                        TapGesture()
+                            .onEnded {
+                                self.addImage(at: displayedImages[index].position)
+                                self.playSound()
+                            }
+                    )
             }
         }
     }
     
-    private func selectRandomImage() {
-        self.selectedImage = self.images.randomElement()
-        self.imageSize = CGSize(width: CGFloat.random(in: 100...300), height: CGFloat.random(in: 100...300)) // Randomize the size of the image
+    private func addImage(at location: CGPoint) {
+        let randomImage = images.randomElement()!
+        let randomSize = CGSize(width: CGFloat.random(in: 100...300), height: CGFloat.random(in: 100...300))
+        
+        let newImage = (image: randomImage, position: location, size: randomSize)
+        
+        if displayedImages.count >= 10 {
+            displayedImages.removeFirst()
+        }
+        
+        displayedImages.append(newImage)
     }
     
     private func playSound() {
@@ -53,8 +60,18 @@ struct ContentView: View {
 }
 
 class AudioManager: ObservableObject {
-    var audioPlayer: AVAudioPlayer?
-    let soundFileNames = ["sound1", "sound2", "sound3", "sound4", "sound5", "sound6"]
+    var audioPlayers: [AVAudioPlayer] = []
+    let soundFileNames = ["Audio 1_1", "Audio 2_1", "Audio 3_1", "Audio 4_1", "Audio 5_1", "Audio 6_1", "Audio 7_1", "Audio 8_1", "Audio 9_1", "Audio 10_1", "Audio 11_1", "Audio 12_1", "Audio 13_1", "Audio 14_1", "Audio 15_1", "Audio 16_1", "Audio 17_1", "Audio 18_1", "Audio 19_1", "Audio 20_1", "Audio 21_1", "Audio 22_1", "Audio 23_1", "Audio 24_1", "Audio 25_1", "Audio 26_1", "Audio 27_1"]
+
+    init() {
+        // Configure AVAudioSession to allow mixing
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set audio session category: \(error.localizedDescription)")
+        }
+    }
 
     func playRandomSound() {
         guard let soundFileName = soundFileNames.randomElement() else {
@@ -68,16 +85,14 @@ class AudioManager: ObservableObject {
         }
         
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            audioPlayer?.play()
+            let audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayers.append(audioPlayer) // Keep a reference to the player to prevent it from being deallocated
+            audioPlayer.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
         }
     }
 }
-
-
-
 
 #Preview {
     ContentView()
